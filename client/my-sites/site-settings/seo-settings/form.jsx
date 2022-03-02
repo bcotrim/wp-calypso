@@ -1,8 +1,10 @@
 import {
 	FEATURE_ADVANCED_SEO,
 	FEATURE_SEO_PREVIEW_TOOLS,
+	TYPE_PRO,
 	TYPE_BUSINESS,
 	findFirstSimilarPlanKey,
+	isWpComAnnualPlan,
 } from '@automattic/calypso-products';
 import { Card, Button } from '@automattic/components';
 import { localize } from 'i18n-calypso';
@@ -253,6 +255,11 @@ export class SiteSettingsFormSEO extends Component {
 
 		const generalTabUrl = getGeneralTabUrl( slug );
 
+		// We don't have a monthly or a biennial counterparts for the Pro plan for now.
+		const wpcomUpsellPlanType =
+			selectedSite.plan &&
+			( isWpComAnnualPlan( selectedSite.plan.product_slug ) ? TYPE_PRO : TYPE_BUSINESS );
+
 		const upsellProps =
 			siteIsJetpack && ! isAtomic
 				? {
@@ -262,13 +269,13 @@ export class SiteSettingsFormSEO extends Component {
 				  }
 				: {
 						title: translate(
-							'Boost your search engine ranking with the powerful SEO tools in the Business plan'
+							'Boost your search engine ranking with the powerful SEO tools in the Pro plan'
 						),
 						feature: FEATURE_ADVANCED_SEO,
 						plan:
 							selectedSite.plan &&
 							findFirstSimilarPlanKey( selectedSite.plan.product_slug, {
-								type: TYPE_BUSINESS,
+								type: wpcomUpsellPlanType,
 							} ),
 				  };
 
