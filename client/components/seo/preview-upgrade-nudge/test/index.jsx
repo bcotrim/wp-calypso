@@ -47,7 +47,7 @@ describe( 'SeoPreviewNudge basic tests', () => {
 
 describe( 'UpsellNudge should get appropriate plan constant', () => {
 	[ PLAN_FREE, PLAN_BLOGGER, PLAN_PERSONAL, PLAN_PREMIUM ].forEach( ( product_slug ) => {
-		test( `Managed 1 year for (${ product_slug })`, () => {
+		test( `Pro 1 year for (${ product_slug })`, () => {
 			const comp = shallow(
 				<SeoPreviewNudge { ...props } isJetpack={ false } site={ { plan: { product_slug } } } />
 			);
