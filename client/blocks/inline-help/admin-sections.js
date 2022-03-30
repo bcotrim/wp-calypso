@@ -153,7 +153,7 @@ export const getAdminSections = createSelector(
 					"By upgrading to the Pro plan, you'll be able to monetize your site through the WordAds program."
 				),
 				link: `/earn/${ siteSlug }`,
-				synonyms: [ 'monetize', 'wordads', 'managed' ],
+				synonyms: [ 'monetize', 'wordads', 'pro' ],
 				icon: 'money',
 			},
 			{
